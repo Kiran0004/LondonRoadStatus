@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+
+apply from: '../config/android-common.gradle'
+apply from: '../config/common.gradle'
+
+android {
+
+    packagingOptions {
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
+
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.releaseVersionCode
+        versionName Versions.releaseVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField 'String', "AppId", "\"9a39735a\""
+            buildConfigField 'String', "AppKey", "\"06468540d6c83139ba49ff82f870866e\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField 'String', "AppId", "\"9a39735a\""
+            buildConfigField 'String', "AppKey", "\"06468540d6c83139ba49ff82f870866e\""
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    // project dependencies
+    implementation project(ProjectModules.domain)
+
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    // retrofit / network dependencies
+    api ProjectDependencies.retrofit
+    implementation ProjectDependencies.coroutinesAdapter
+    implementation ProjectDependencies.gson
+    implementation ProjectDependencies.loggingInterceptor
+}

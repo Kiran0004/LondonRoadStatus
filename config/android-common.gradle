@@ -1,0 +1,18 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    // koin
+    implementation ProjectDependencies.koin
+    implementation ProjectDependencies.koinViewModel
+
+    // testing dependencies
+    androidTestImplementation ProjectDependencies.androidTestRunner
+    androidTestImplementation ProjectDependencies.espresso
+    androidTestImplementation ProjectDependencies.kakao
+}

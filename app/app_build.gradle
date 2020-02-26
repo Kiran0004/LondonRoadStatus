@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+apply from: '../config/android-common.gradle'
+apply from: '../config/common.gradle'
+
+android {
+
+    packagingOptions {
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        applicationId "com.example.roadstatus"
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.releaseVersionCode
+        versionName Versions.releaseVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+
+    // module dependencies
+    implementation project(ProjectModules.data)
+    implementation project(ProjectModules.domain)
+
+    // external dependencies
+    implementation ProjectDependencies.supportAppCompat
+    implementation ProjectDependencies.supportDesign
+    implementation ProjectDependencies.recyclerView
+    implementation ProjectDependencies.lifecycle
+
+    testImplementation ProjectDependencies.lifecycleTesting
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}

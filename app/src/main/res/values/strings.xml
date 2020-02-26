@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">London Road Status</string>
+    <string name="error_message">The following road id is not recognised: </string>
+</resources>

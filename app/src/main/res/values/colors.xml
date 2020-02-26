@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#303F9F</color>
+    <color name="colorPrimaryDark">#1E2983</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorLightGrey">#9B9B9B</color>
+
+    <!--Line status colors-->
+    <color name="colorGreen">#57C134</color>
+    <color name="colorOrange">#F5A623</color>
+    <color name="colorRed">#D0021B</color>
+</resources>
